@@ -1,0 +1,10 @@
+﻿<Application x:Class="Biblio.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Biblio"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+		<local:IntToColor x:Key="IntToColConv"/>
+		<local:IntToString x:Key="IntToString"/>
+	</Application.Resources>
+</Application>
