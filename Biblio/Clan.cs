@@ -11,6 +11,8 @@ namespace Biblio
 	{
 		public int Id { get; set; }
 
+		public int Knjiga { get; set; }
+
 		private string _ime;
 		public string Ime 
 		{ 

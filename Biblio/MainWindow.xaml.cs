@@ -30,7 +30,13 @@ namespace Biblio
 		{
 			InitializeComponent();
 			Baza.Clans.ToList();
+			Baza.Knjigas.ToList();
 			dgClanovi.ItemsSource = Baza.Clans.Local;
+			dgKnjige.ItemsSource = Baza.Knjigas.Local;
+			cmbClanovi.ItemsSource = ValidniClanovi();
+			cmbClanovi.DisplayMemberPath = "ImeIPrezime";
+			SviClanovi.ItemsSource = Baza.Clans.Local;
+			SviClanovi.DisplayMemberPath = "ImeIPrezime";
 			BindingGroup = new BindingGroup();
 			DataContext = new Clan();
 		}
@@ -75,6 +81,53 @@ namespace Biblio
 			{
 				(dgClanovi.SelectedItem as Clan).PlacenihClanarina++;
 				Baza.SaveChanges();
+			}
+		}
+
+		private void EditovanjeKnjige(object sender, DataGridCellEditEndingEventArgs e)
+		{
+			Baza.SaveChanges();
+		}
+
+		public List<Clan> ValidniClanovi()
+			=> Baza.Clans.Where(c => c.Knjiga <= 3).ToList().Where(c => c.KasniMeseci <= 0).ToList();
+
+		private void Iznajmi(object sender, RoutedEventArgs e)
+		{
+			if (cmbClanovi.SelectedItem != null && dgKnjige.SelectedItem != null)
+			{
+				Rent r = new Rent();
+				r.Clan = cmbClanovi.SelectedItem as Clan;
+				r.Knjiga = dgKnjige.SelectedItem as Knjiga;
+				r.Uzeo = DateTime.Now;
+
+				var cl = cmbClanovi.SelectedItem as Clan;
+				var knj = dgKnjige.SelectedItem as Knjiga;
+				if (knj.Primeraka > 0)
+				{
+					Baza.Rents.Add(new Rent
+					{
+						Clan = cl,
+						Knjiga = knj as Knjiga,
+						Uzeo = DateTime.Now
+					});
+
+					cl.Knjiga++;
+					knj.Primeraka--;
+
+					Baza.SaveChanges();
+				}
+				cmbClanovi.ItemsSource = ValidniClanovi();
+			}
+		}
+
+		private void IzborClana(object sender, SelectionChangedEventArgs e)
+		{
+			if (SviClanovi.SelectedItem != null)
+			{
+				int lol = (SviClanovi.SelectedItem as Clan).Id;
+				KnjigeKodClanova.ItemsSource =
+					Baza.Rents.Where(r => r.Clan.Id == lol).ToList();
 			}
 		}
 	}

@@ -38,5 +38,26 @@
 				</DataGrid>
 			</DockPanel>
 		</TabItem>
+		<TabItem Header="Knjige">
+			<DockPanel>
+				<StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+					<ComboBox Width="100" Name="cmbClanovi"  FontSize="24"/>
+					<Button FontSize="24" Click="Iznajmi">Iznajmi</Button>
+				</StackPanel>
+				<DataGrid AutoGenerateColumns="False" FontSize="24" ColumnWidth="*" Name="dgKnjige" CellEditEnding="EditovanjeKnjige">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="Id" Binding="{Binding Id, Converter={StaticResource IntToString}, Mode=OneWay}" IsReadOnly="True"/>
+						<DataGridTextColumn Header="Naziv" Binding="{Binding Naziv, UpdateSourceTrigger=PropertyChanged}"/>
+						<DataGridTextColumn Header="Kolicina" Binding="{Binding Primeraka, UpdateSourceTrigger=PropertyChanged}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+			</DockPanel>
+		</TabItem>
+		<TabItem Header="Pregled">
+			<DockPanel>
+				<ComboBox Name="SviClanovi" FontSize="24" DockPanel.Dock="Top" SelectionChanged="IzborClana" />
+				<DataGrid Name="KnjigeKodClanova" IsReadOnly="True" FontSize="24" ColumnWidth="*"/>
+			</DockPanel>
+		</TabItem>
 	</TabControl>
 </Window>

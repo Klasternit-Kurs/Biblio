@@ -65,6 +65,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202009031721157_Rents.cs" />
+    <Compile Include="Migrations\202009031721157_Rents.designer.cs">
+      <DependentUpon>202009031721157_Rents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009031725284_ClanoviBrKnjiga.cs" />
+    <Compile Include="Migrations\202009031725284_ClanoviBrKnjiga.designer.cs">
+      <DependentUpon>202009031725284_ClanoviBrKnjiga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rent.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,12 +84,22 @@
     </Compile>
     <Compile Include="Clan.cs" />
     <Compile Include="DB.cs" />
+    <Compile Include="Knjiga.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202009011753179_InitialCreate.cs" />
+    <Compile Include="Migrations\202009011753179_InitialCreate.designer.cs">
+      <DependentUpon>202009011753179_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009031626230_Knjige.cs" />
+    <Compile Include="Migrations\202009031626230_Knjige.designer.cs">
+      <DependentUpon>202009031626230_Knjige.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,6 +113,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202009011753179_InitialCreate.resx">
+      <DependentUpon>202009011753179_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009031626230_Knjige.resx">
+      <DependentUpon>202009031626230_Knjige.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009031721157_Rents.resx">
+      <DependentUpon>202009031721157_Rents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009031725284_ClanoviBrKnjiga.resx">
+      <DependentUpon>202009031725284_ClanoviBrKnjiga.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

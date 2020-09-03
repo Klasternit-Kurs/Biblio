@@ -13,10 +13,14 @@ namespace Biblio
 		{ }
 
 		public DbSet<Clan> Clans { get; set; }
+		public DbSet<Knjiga> Knjigas { get; set; }
+		public DbSet<Rent> Rents { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Clan>().HasKey(c => c.Id);
+			modelBuilder.Entity<Knjiga>().HasKey(k => k.Id);
+			modelBuilder.Entity<Rent>().HasKey(r => r.Id);
 		}
 	}
 }
